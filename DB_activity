@@ -1,0 +1,46 @@
+CREATE DATABASE banco_shig_aula;
+USE banco_shig_aula;
+
+CREATE TABLE Estado (
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT
+,nome VARCHAR(255) NOT NULL UNIQUE
+,sigla CHAR(2) NOT NULL UNIQUE
+,ativo CHAR(1) NOT NULL DEFAULT 'S'
+);
+
+DROP database banco_shig_aula;
+
+INSERT INTO Estado (id, nome, sigla) VALUES (0, 'Paranáue', 'PR');
+
+SELECT id, nome, sigla, ativo FROM Estado;
+
+CREATE TABLE produtos (
+id INT NOT NULL UNIQUE AUTO_INCREMENT PRIMARY KEY
+,nome	VARCHAR(255) UNIQUE NOT NULL
+,preco_custo DECIMAL NOT NULL
+,preco_venda DECIMAL NOT NULL
+,ativo CHAR (1) NOT NULL DEFAULT 'S'
+);
+
+INSERT INTO produtos (nome, preco_custo, preco_venda)
+VALUES ('BOLACHA DE MEL', 5.19, 7);
+
+INSERT INTO produtos (nome, preco_custo, preco_venda)
+VALUES ('BOLACHA DE BOLOLO', 4.19, 7);
+
+INSERT INTO produtos (nome, preco_custo, preco_venda)
+VALUES ('BOLACHA DE COOKIE', 3.19, 7);
+
+CREATE TABLE cidades(
+id INT NOT NULL PRIMARY KEY AUTO_INCREMENT
+,nome	VARCHAR(255) NOT NULL UNIQUE
+,sigla VARCHAR(255) NOT NULL
+,estado_id INT NOT NULL
+,ativo CHAR(1) NOT NULL DEFAULT 'S'
+,CHECK (ativo IN ('S','N'))
+,FOREIGN KEY(estado_id) REFERENCES estado (id)
+);
+
+INSERT INTO cidades (nome, sigla, estado_id)  VALUES ('paranavai', 'pvai', 1);
+INSERT INTO cidades (nome, sigla, estado_id)  VALUES ('new hope', 'nesperança', 1);
+INSERT INTO cidades (nome, sigla, estado_id)  VALUES ('maringa', 'mga', 1);
