@@ -36,3 +36,32 @@ INSERT INTO cidade (nome, estado_id) VALUES ('PARANAVAI',1);
 INSERT INTO cidade (nome, estado_id) VALUES ('LONDRINA',1);
 
 SELECT * FROM cidade;
+
+/* 
+ALTERAÇÕES NAS TABELAS
+Caso ainda não estiver na produção, faça as alterações direto na tabela
+Se a base de dados já está na produção, precisa-se utilizar o ALTER -> cuidado!!!
+**/
+
+ALTER TABLE estado	ADD COLUMN	 regiao INT;
+
+SELECT * FROM estado;
+DESCRIBE estado;
+DESC estado;
+ALTER TABLE	estado CHANGE regiao regiao_estado VARCHAR (100) NOT NULL;
+ALTER TABLE estado	MODIFY COLUMN regiao VARCHAR(100) NOT NULL;
+ALTER TABLE estado DROP COLUMN regiao;
+ALTER TABLE estado DROP CONSTRAINT estado_ativo_S_ou_N;
+
+
+ALTER TABLE estado MODIFY COLUMN ativo ENUM('S','N') NOT NULL;
+INSERT INTO estado (nome, sigla, ativo) VALUES ('MATO GROSSO', 'MT', 'A');   -- Vai gerar erro por causa do novo enum 
+
+/** ESSES SÃO OS COMANDOS DDL
+    DDL -> Date DEFINITION language 
+    CREATE/ALTER/DROP TABLE
+    ALTER TABLE ADD/DROP/MODIFY/CHANGE
+**/
+
+
+
