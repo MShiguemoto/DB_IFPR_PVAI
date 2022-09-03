@@ -1,8 +1,9 @@
 DROP DATABASE IF EXISTS curso_db;
 CREATE DATABASE curso_db;
 USE curso_db;
-
 DROP TABLE IF EXISTS estado;
+
+SELECT @@version, @@version_compile_os, @@lower_case_table_names;
 CREATE TABLE estado (
 id INT PRIMARY KEY AUTO_INCREMENT
 ,nome VARCHAR(200) NOT NULL UNIQUE							/*	constraint inline	**/
@@ -16,6 +17,7 @@ id INT PRIMARY KEY AUTO_INCREMENT
 INSERT INTO estado (nome, sigla, ativo) VALUES ('PARANÁ', 'PR', 'S');
 -- INSERT INTO estado (id, nome, sigla, ativo, data_cadastro) VALUES (2,'PARANÁ', 'PR', 'S','2022-09-03');
 INSERT INTO estado (nome, sigla, ativo) VALUES ('SÃO PAULO', 'SP', 'S');
+INSERT INTO estado (nome, sigla, ativo) VALUES ('MATO GROSSO', 'MT', 'S');
 
 SELECT id, nome, sigla, ativo, data_cadastro FROM estado;
 
@@ -48,19 +50,39 @@ ALTER TABLE estado	ADD COLUMN	 regiao INT;
 SELECT * FROM estado;
 DESCRIBE estado;
 DESC estado;
-ALTER TABLE	estado CHANGE regiao regiao_estado VARCHAR (100) NOT NULL;
-ALTER TABLE estado	MODIFY COLUMN regiao VARCHAR(100) NOT NULL;
-ALTER TABLE estado DROP COLUMN regiao;
-ALTER TABLE estado DROP CONSTRAINT estado_ativo_S_ou_N;
+-- ALTER TABLE	estado CHANGE regiao regiao_estado VARCHAR (100) NOT NULL;
+-- ALTER TABLE estado	MODIFY COLUMN regiao VARCHAR(100);
+-- ALTER TABLE estado DROP COLUMN regiao;
+-- ALTER TABLE estado DROP CONSTRAINT estado_ativo_S_ou_N;
 
 
 ALTER TABLE estado MODIFY COLUMN ativo ENUM('S','N') NOT NULL;
-INSERT INTO estado (nome, sigla, ativo) VALUES ('MATO GROSSO', 'MT', 'A');   -- Vai gerar erro por causa do novo enum 
+-- INSERT INTO estado (nome, sigla, ativo) VALUES ('MATO GROSSO', 'MT', 'A');   -- Vai gerar erro por causa do novo enum 
 
-/** ESSES SÃO OS COMANDOS DDL
+/** ESSES SÃO OS COMANDOS DDL				#ENDREGION
     DDL -> Date DEFINITION language 
     CREATE/ALTER/DROP TABLE
     ALTER TABLE ADD/DROP/MODIFY/CHANGE
 **/
+	
+    
+/**			INSERT ->	ESTADO
+id INT PRIMARY KEY AUTO_INCREMENT
+,nome VARCHAR(200) NOT NULL UNIQUE	
+,sigla CHAR (2) NOT NULL UNIQUE
+,ativo CHAR (1) NOT NULL	DEFAULT ('S')
+,data_cadastro
+ **/
+    
+    
+/**DML ->  DATE MANIPULATION LANGUAGE	#REGION **/
+INSERT INTO estado( nome, sigla, ativo)	VALUES ('CEARÁ', 'CE', 'S');
+INSERT INTO estado(id, nome, sigla, ativo, data_cadastro)	VALUES (DEFAULT,'AMAPA', 'AM', DEFAULT, DEFAULT);
+INSERT INTO estado (nome, sigla) VALUES ('MATO GROSSO DO SUL', 'MS');
 
--- aula sobre padrões ---
+INSERT INTO cidade (nome, estado_id) VALUES ('LOANDA', 1), ('NOVA ESPERANÇA', 5);
+
+SELECT * FROM estado;
+SELECT * FROM cidade;
+INSERT INTO cidade (nome,estado_id) VALUES ('BAURU', 6);
+
