@@ -63,5 +63,4 @@ INSERT INTO estado (nome, sigla, ativo) VALUES ('MATO GROSSO', 'MT', 'A');   -- 
     ALTER TABLE ADD/DROP/MODIFY/CHANGE
 **/
 
-
-
+-- aula sobre padrões ---
