@@ -81,8 +81,25 @@ INSERT INTO estado(id, nome, sigla, ativo, data_cadastro)	VALUES (DEFAULT,'AMAPA
 INSERT INTO estado (nome, sigla) VALUES ('MATO GROSSO DO SUL', 'MS');
 
 INSERT INTO cidade (nome, estado_id) VALUES ('LOANDA', 1), ('NOVA ESPERANÇA', 5);
+-- INSERT INTO cidade (nome,estado_id) VALUES ('BAURU', 6);
+
+
+
+UPDATE estado SET nome = 'PARANÁ' WHERE id = 1;
+UPDATE estado SET nome = 'PARANÁ', ativo = 'N' WHERE id = 1;
+UPDATE estado SET nome = 'PARANÁ', ativo = 'S', data_cadastro = '2020-10-01'  WHERE id = 1;
+UPDATE estado SET data_cadastro = CURRENT_TIMESTAMP WHERE id = 1;
+UPDATE estado SET nome = 'PARANÁ', data_cadastro = DEFAULT WHERE id = 1;
+UPDATE estado SET ativo = 'N';
+
+UPDATE estado SET ativo = 'N' WHERE estado_id = 1;
+
+DELETE FROM cidade WHERE id = 1;				-- procurar sempre utilizar o DELETE com o id ou PK - por ser unico e exclusivo
+DELETE FROM cidade WHERE estado_id = 1;			-- usado para excluir os dados de um conjunto semelhante de FK
+-- DELETE FROM cidade;        -- irá deletas todos os dados da coluna cidade
 
 SELECT * FROM estado;
 SELECT * FROM cidade;
-INSERT INTO cidade (nome,estado_id) VALUES ('BAURU', 6);
+
+
 
