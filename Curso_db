@@ -90,9 +90,9 @@ UPDATE estado SET nome = 'PARANÁ', ativo = 'N' WHERE id = 1;
 UPDATE estado SET nome = 'PARANÁ', ativo = 'S', data_cadastro = '2020-10-01'  WHERE id = 1;
 UPDATE estado SET data_cadastro = CURRENT_TIMESTAMP WHERE id = 1;
 UPDATE estado SET nome = 'PARANÁ', data_cadastro = DEFAULT WHERE id = 1;
-UPDATE estado SET ativo = 'N';
+-- UPDATE estado SET ativo = 'N';
 
-UPDATE estado SET ativo = 'N' WHERE estado_id = 1;
+-- UPDATE estado SET ativo = 'N' WHERE estado_id = 1;
 
 DELETE FROM cidade WHERE id = 1;				-- procurar sempre utilizar o DELETE com o id ou PK - por ser unico e exclusivo
 DELETE FROM cidade WHERE estado_id = 1;			-- usado para excluir os dados de um conjunto semelhante de FK
@@ -162,3 +162,23 @@ WHERE
     -- YEAR (estado.data_cadastro) = BETWEEN 1490 AND 2021;               --FAIXA TEMPORAL
     -- AND ativo = 'S';  		- condição além de espaços de tempo
     
+INSERT INTO cidade (nome, estado_id) VALUES ('LOANDA', 1);
+INSERT INTO cidade (nome, estado_id) VALUES ('PARANAGUA', 1);
+INSERT INTO cidade (nome, estado_id) VALUES ('ROLANDIA', 1);
+INSERT INTO cidade (nome, estado_id) VALUES ('CAMPINAS', 2);
+INSERT INTO cidade (nome, estado_id) VALUES ('RIBEIRAO PRETO', 2);
+
+-- SQL 89 ==
+SELECT * FROM estado, cidade    -- O '*' PUXA TODOS OS DADOS DA TABELA ESTADO E DA TABELA CIDADE
+WHERE cidade.estado_id = estado_id;
+
+-- SQL 92 ==
+SELECT 	estado.id ,cidade.id FROM estado
+INNER JOIN cidade;			-- INNER PODE FICAR IMPLÍCITO  -> NÃO PRECISA APARECER <-
+
+SELECT * FROM estado
+JOIN cidade ON cidade.estado_id = estado.id;
+    
+    
+    
+-- created by mshig
