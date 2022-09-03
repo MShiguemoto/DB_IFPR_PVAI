@@ -101,5 +101,64 @@ DELETE FROM cidade WHERE estado_id = 1;			-- usado para excluir os dados de um c
 SELECT * FROM estado;
 SELECT * FROM cidade;
 
+/*
+	atividade 8
+*/
 
+SELECT	
+	nome
+    ,sigla
+    ,ativo
+FROM
+	estado;
+    
+    
+    
+SELECT	
+	estado.nome
+    ,estado.sigla
+    ,estado.ativo
+FROM
+	estado;
+    
+    
+    /*
+SELECT	
+	estado.nome  'ESTADO NOME'
+    ,estado.sigla 'SIGLA ESTADO'
+    ,estado.ativo	'ESTADO É ATIVO?'
+FROM
+	estado e;
+*/
 
+SELECT	
+	e.nome  'ESTADO NOME'
+    ,e.sigla 'SIGLA ESTADO'
+    ,e.ativo	'ESTADO É ATIVO?'
+FROM
+	estado e;
+    
+/*
+    SELECT	
+	estado.nome  'ESTADO NOME'
+    ,estado.sigla 'SIGLA ESTADO'
+    ,estado.ativo	'ESTADO É ATIVO?'
+FROM
+	estado
+WHERE
+	estado.id = 1;
+    
+    */
+    SELECT	
+	estado.nome  'ESTADO NOME'
+    ,estado.sigla 'SIGLA ESTADO'
+    ,estado.data_cadastro 'DATA DE CADASTRO'
+FROM
+	estado
+WHERE
+	YEAR(estado.data_cadastro) = 2022    -- SINAIS LÓGICOS SÃO APLICAVEIS TAMBÉM   >,<,!=
+    OR YEAR(estado.data_cadastro) = 2021;
+    -- or year, and year	<= 2030,  >= 1490
+    -- YEAR (estado.data_cadastro) = BETWEEN 1490 AND 2021;               --FAIXA TEMPORAL
+    -- AND ativo = 'S';  		- condição além de espaços de tempo
+    
