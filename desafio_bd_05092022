@@ -1,0 +1,58 @@
+USE banco_shig_aula;
+DROP TABLE cliente;
+
+CREATE TABLE cliente (
+id INT NOT NULL AUTO_INCREMENT UNIQUE PRIMARY KEY
+,nome VARCHAR(255) UNIQUE NOT NULL 
+,idade INT(3) NOT NULL
+,altura DECIMAL(3,2) NOT NULL
+,peso DECIMAL(5,2) NOT NULL 
+,CONSTRAINT cidade_id FOREIGN KEY (cidade_id) REFERENCES cidade(id) 
+,ativo CHAR(1) NOT NULL DEFAULT 'S'
+,CHECK (ativo in ('S', 'N'))
+,cidade_id INT NOT NULL
+);
+
+INSERT INTO cliente (nome, idade, altura, peso, cidade_id) VALUES ('SOLANGE', 32, 1.5, 64, 1);
+INSERT INTO cliente (nome, idade, altura, peso, cidade_id) VALUES ('MARIO', 33, 1.85, 90, 2);
+INSERT INTO cliente (nome, idade, altura, peso, cidade_id) VALUES ('GABRIEL', 20, 1.75, 72, 3);
+
+
+SELECT 
+	* 
+FROM 							-- terminar o join -> mudar o cidade_id para cidade_nome;
+	cliente JOIN cidade on cliente.cidade_id = cidade_nome;
+
+CREATE TABLE cidade(
+id INT NOT NULL AUTO_INCREMENT UNIQUE PRIMARY KEY
+,nome VARCHAR(255) UNIQUE NOT NULL 
+,regiao VARCHAR(255) NOT NULL 
+,ativo CHAR(1) NOT NULL DEFAULT 'S'
+,CHECK (ativo in ('S', 'N'))
+,estado_id INT NOT NULL
+,CONSTRAINT estado_id FOREIGN KEY (estado_id) REFERENCES estado(id) 
+);
+
+CREATE TABLE estado(
+id INT NOT NULL AUTO_INCREMENT UNIQUE PRIMARY KEY
+,nome VARCHAR(255) UNIQUE NOT NULL
+,sigla CHAR(2) NOT NULL 
+,regiao VARCHAR(255) NOT NULL 
+,ativo CHAR(1) NOT NULL DEFAULT 'S'
+,CHECK (ativo in ('S', 'N'))
+);
+
+INSERT INTO estado (nome, sigla, regiao) VALUES ('PARANÁ','PR','SUL');
+INSERT INTO estado (nome, sigla, regiao) VALUES ('SANTA CATARINA','SC','SUL');
+INSERT INTO estado (nome, sigla, regiao) VALUES ('RIO GRANDE DO SUL','RS','SUL');
+
+INSERT INTO estado (nome, sigla, regiao) VALUES ('SAO PAULO','SP','SUDESTE');
+INSERT INTO estado (nome, sigla, regiao) VALUES ('RIO DE JANEIRO','RJ','SUDESTE');
+
+SELECT * FROM estado;
+SELECT * FROM cidade;
+
+INSERT INTO cidade (nome, regiao, estado_id) VALUES ('PARANAVAI','NOROESTE','1');
+INSERT INTO cidade (nome, regiao, estado_id) VALUES ('NOVA ESPERANÇA','NOROESTE','1');
+INSERT INTO cidade (nome, regiao, estado_id) VALUES ('ALTO PARANÁ','NOROESTE','1');
+INSERT INTO  () VALUES ();
