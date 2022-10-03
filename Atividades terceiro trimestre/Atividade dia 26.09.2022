@@ -1161,7 +1161,19 @@ WHERE cliente.cidade_id = cidade.id;
 						
 						
 						-- ATIVIDADE 5 ---
-SELECT cidade.nome AS 'NOME CIDADE', estado.sigla AS 'SIGLA' FROM cidade,estado WHERE cidade.estado_id = estado.id AND cidade.ativo = 'S';						
+SELECT cidade.nome AS 'NOME CIDADE', estado.sigla AS 'SIGLA' 
+FROM cidade,estado 
+WHERE cidade.estado_id = estado.id AND cidade.ativo = 'S';
+
+						-- ATIVIDADE 6 ---
+SELECT funcionario.nome AS 'FUNCIONÁRIO', cidade.nome AS 'CIDADE' 
+FROM funcionario,cidade 
+WHERE funcionario.cidade_id = cidade.id;
+
+						-- ATIVIDADE 7 ---
+						-- ATIVIDADE 8 ---
+						-- ATIVIDADE 9 ---
+						-- ATIVIDADE 10 ---
                         
  
  
