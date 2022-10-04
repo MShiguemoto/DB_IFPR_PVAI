@@ -1157,7 +1157,10 @@ FROM cliente, cidade
 WHERE cliente.cidade_id = cidade.id;
 
 						-- ATIVIDADE 4 ---
-						
+SELECT cliente.nome, cidade.nome
+FROM cliente, cidade
+WHERE cliente.cidade_id = cidade.id 
+AND cidade.nome = "PARANAVAÍ";  						
 						
 						
 						-- ATIVIDADE 5 ---
@@ -1171,10 +1174,24 @@ FROM funcionario,cidade
 WHERE funcionario.cidade_id = cidade.id;
 
 						-- ATIVIDADE 7 ---
+SELECT funcionario.nome, estado.sigla
+FROM funcionario, estado
+WHERE funcionario.cidade_id = estado.id;						
 						-- ATIVIDADE 8 ---
+SELECT cliente.nome, cidade.nome        
+FROM cliente
+INNER JOIN cidade, estado
+WHERE cliente.id = cidade.id
+AND cidade.estado_id = 1
+OR cidade.estado_id = 4
+OR cidade.estado_id = 5;
+/*AND cliente.id = cidade.id
+AND cidade.estado_id = estado.id
+AND estado.sigla = "PR" 
+AND estado.sigla = "SC" 
+AND estado.sigla = "RS";   
+*/
 						-- ATIVIDADE 9 ---
-						-- ATIVIDADE 10 ---
-                        
- 
- 
- 
+SELECT estado.nome
+FROM estado, cliente
+WHERE estado.ativo = "S" AND cliente.ativo = "S";
